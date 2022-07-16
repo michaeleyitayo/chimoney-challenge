@@ -27,7 +27,7 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200).send({ data: "CHIMONEY CHALLENGE Backend Application" });
 });
 
-app.use("/api/route", () => {});
+app.use("/api/properties", () => {});
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
