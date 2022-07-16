@@ -15,3 +15,10 @@ export const updateProperty = async (
   );
   return result.acknowledged;
 };
+
+export const getProperties = async (
+  limit: number,
+  skip: number
+): Promise<Array<IPropertyDocument>> => {
+  return await Property.find({}).skip(skip).limit(limit);
+};

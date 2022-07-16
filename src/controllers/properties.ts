@@ -23,12 +23,12 @@ export const addProperty = catchAsync(async (req, res, next) => {
 });
 
 export const editProperty = catchAsync(async (req, res, next) => {
-  const validateResult = propertyValidator.editProperty(req.body);
+  const validateResult = await propertyValidator.editProperty(req.body);
   if (validateResult.error) {
     return next(new AppError(validateResult.error.message, BAD_REQUEST));
   }
 
-  const result = propertiesService.updateProperty(
+  const result = await propertiesService.updateProperty(
     req.params.propertyId,
     req.body
   );
@@ -39,5 +39,17 @@ export const editProperty = catchAsync(async (req, res, next) => {
   res.status(OK).json({
     status: "success",
     message: "Property edited successfully",
+  });
+});
+
+export const fetchProperties = catchAsync(async (req, res, next) => {
+  const limit = Number(req.query.limit) || 10;
+  const page = Number(req.query.page) || 1;
+  const skip = (page - 1) * limit;
+  const properties = await propertiesService.getProperties(limit, skip);
+  res.status(OK).json({
+    status: "success",
+    message: "Properties fetched successfully",
+    data: { properties },
   });
 });
