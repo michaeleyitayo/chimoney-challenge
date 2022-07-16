@@ -19,6 +19,11 @@ export const updateProperty = async (
 export const getProperties = async (
   limit: number,
   skip: number
-): Promise<Array<IPropertyDocument>> => {
-  return await Property.find({}).skip(skip).limit(limit);
+): Promise<{
+  properties: Array<IPropertyDocument>;
+  propertiesCount: number;
+}> => {
+  const properties = await Property.find({}).skip(skip).limit(limit);
+  const propertiesCount = await Property.count();
+  return { properties, propertiesCount };
 };
