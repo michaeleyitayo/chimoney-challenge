@@ -12,3 +12,16 @@ export const addProperty = (body: any): Joi.ValidationResult => {
   });
   return schema.validate(body);
 };
+
+export const editProperty = (body: any): Joi.ValidationResult => {
+  const schema = Joi.object().keys({
+    ownerName: Joi.string(),
+    propertyNickname: Joi.string(),
+    fullAddress: Joi.string(),
+    propertyType: Joi.string(),
+    bedrooms: Joi.number(),
+    bathrooms: Joi.number(),
+    garages: Joi.number(),
+  });
+  return schema.validate(body);
+};
