@@ -9,6 +9,7 @@ import "./config/database";
 import helmet from "helmet";
 import AppError from "./utils/appError";
 import globalErrorHandler from "./controllers/errorController";
+import propertiesRouter from "./routes/properties";
 
 const app: Application = express();
 
@@ -27,7 +28,7 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200).send({ data: "CHIMONEY CHALLENGE Backend Application" });
 });
 
-app.use("/api/properties", () => {});
+app.use("/api/properties", propertiesRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
