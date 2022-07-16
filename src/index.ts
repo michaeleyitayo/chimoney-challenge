@@ -7,6 +7,8 @@ import morganBody from "morgan-body";
 dotenv.config();
 import "./config/database";
 import helmet from "helmet";
+import AppError from "./utils/appError";
+import globalErrorHandler from "./controllers/errorController";
 
 const app: Application = express();
 
@@ -27,8 +29,12 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/route", () => {});
 
-// PORT
-//
+app.all("*", (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+app.use(globalErrorHandler);
+
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
