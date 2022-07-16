@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.get("/", (req: Request, res: Response) => {
-  res.status(200).send({ data: "SHOP2AFRICA Backend Application" });
+  res.status(200).send({ data: "CHIMONEY CHALLENGE Backend Application" });
 });
 
 app.use("/api/route", () => {});
