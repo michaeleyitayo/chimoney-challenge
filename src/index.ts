@@ -24,7 +24,7 @@ const swaggerOptions = {
       contact: {
         name: "Michael Eyitayo <michaeleyitayo.dev@gmail.com>",
       },
-      servers: ["http://localhost:8000"],
+      servers: ["http://localhost:8000", "https://chimoney-test.herokuapp.com"],
     },
   },
   apis: ["./src/routes/*.ts", "./src/routes/*.js"],

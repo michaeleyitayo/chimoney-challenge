@@ -1,7 +1,7 @@
 {
     "name": "chimoney-be",
     "version": "1.0.0",
-    "description": "Shopping",
+    "description": "Properties",
     "main": "src/index.ts",
     "author": "Michael Eyitayo",
     "license": "MIT",
